@@ -1,0 +1,20 @@
+{
+  "name": "ng2-hero-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "http-build": "http-server build/web -p 8085 -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharikovvladislav/angular2-hero-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharikovvladislav/angular2-hero-app/issues"
+  },
+  "homepage": "https://github.com/sharikovvladislav/angular2-hero-app#readme"
+}
