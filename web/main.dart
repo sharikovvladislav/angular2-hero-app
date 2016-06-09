@@ -12,9 +12,4 @@ main() {
   Logger.root.onRecord.listen((LogRecord rec) {
     print('${rec.level.name}: ${rec.time}: ${rec.message}');
   });
-
-  final Logger log = new Logger('MyClassName');
-
-  log.info('info');
-  log.warning('warning');
 }

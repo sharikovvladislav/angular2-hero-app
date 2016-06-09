@@ -1,5 +1,6 @@
 // #docregion pt2
 import 'package:angular2/core.dart';
+import 'package:logging/logging.dart';
 
 class Hero {
   final int id;
@@ -84,17 +85,16 @@ class Hero {
 class AppComponent {
   final String title = 'Tour of Heroes';
   final List<Hero> heroes = mockHeroes;
-// #docregion selected-hero-1
-  Hero selectedHero;
-// #enddocregion selected-hero-1
 
-// #docregion on-select-1
+  Hero selectedHero;
+
+  final Logger log = new Logger('AppComponent');
+
   onSelect(Hero hero) {
+    log.info('onSelect method called');
     selectedHero = hero;
   }
-// #enddocregion on-select-1
 }
-// #enddocregion pt2
 
 // #docregion hero-array
 final List<Hero> mockHeroes = [
