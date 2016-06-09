@@ -1,13 +1,8 @@
-// #docregion pt2
 import 'package:angular2/core.dart';
 import 'package:logging/logging.dart';
 
-class Hero {
-  final int id;
-  String name;
-
-  Hero(this.id, this.name);
-}
+import 'hero.dart';
+import 'hero_detail_component.dart';
 
 @Component(
     selector: 'my-app',
@@ -21,16 +16,8 @@ class Hero {
           <span class="badge">{{hero.id}}</span> {{hero.name}}
         </li>
       </ul>
-      <div *ngIf="selectedHero != null">
-        <h2>{{selectedHero.name}} details!</h2>
-        <div><label>id: </label>{{selectedHero.id}}</div>
-        <div>
-          <label>name: </label>
-          <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-        </div>
-      </div>
+      <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     ''',
-// #docregion styles-1
     styles: const [
       '''
       .selected {
@@ -80,8 +67,10 @@ class Hero {
         border-radius: 4px 0px 0px 4px;
       }
     '''
+    ],
+    directives: const [
+      HeroDetailComponent
     ])
-// #enddocregion styles-1
 class AppComponent {
   final String title = 'Tour of Heroes';
   final List<Hero> heroes = mockHeroes;
@@ -96,7 +85,6 @@ class AppComponent {
   }
 }
 
-// #docregion hero-array
 final List<Hero> mockHeroes = [
   new Hero(11, 'Mr. Nice'),
   new Hero(12, 'Narco'),
@@ -109,6 +97,3 @@ final List<Hero> mockHeroes = [
   new Hero(19, 'Magma'),
   new Hero(20, 'Tornado')
 ];
-// #enddocregion hero-array
-
-// #enddocregion pt2
