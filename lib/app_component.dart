@@ -3,6 +3,7 @@ import 'package:logging/logging.dart';
 
 import 'hero.dart';
 import 'hero_detail_component.dart';
+import 'hero_service.dart';
 
 @Component(
     selector: 'my-app',
@@ -68,20 +69,31 @@ import 'hero_detail_component.dart';
       }
     '''
     ],
+    providers: const [HeroService],
     directives: const [
       HeroDetailComponent
     ])
-class AppComponent {
+class AppComponent  implements OnInit {
   final String title = 'Tour of Heroes';
-  final List<Hero> heroes = mockHeroes;
-
+  final HeroService _heroService;
+  List<Hero> heroes;
   Hero selectedHero;
-
   final Logger log = new Logger('AppComponent');
+
+  AppComponent(this._heroService);
+
+  getHeroes() async {
+    heroes = await _heroService.getHeroes();
+    //heroes = await _heroService.getHeroesSlowly();
+  }
 
   onSelect(Hero hero) {
     log.info('onSelect method called');
     selectedHero = hero;
+  }
+
+  ngOnInit() {
+    getHeroes();
   }
 }
 
